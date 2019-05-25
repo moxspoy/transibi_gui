@@ -72,10 +72,6 @@ class Ui_Transibi(object):
         self.videoframe.setPalette(self.palette)
         self.videoframe.setAutoFillBackground(True)
 
-        self.logo = QtWidgets.QLabel(self.centralWidget)
-        self.logo.setGeometry(QtCore.QRect(350, 480, 21, 21))
-        self.label.setPixmap(QtGui.QPixmap("../src/logo_dikti.png"))
-        self.label.setScaledContents(True)
         
         self.label_2 = QtWidgets.QLabel(self.centralWidget)
         self.label_2.setGeometry(QtCore.QRect(140, 480, 101, 21))
@@ -86,6 +82,22 @@ class Ui_Transibi(object):
         self.caption.setGeometry(QtCore.QRect(240, 480, 301, 71))
         self.caption.setObjectName("caption")
         self.caption.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        
+        self.dikti= QtWidgets.QLabel(self.centralWidget)
+        self.dikti.setGeometry(QtCore.QRect(750, 30, 91, 101))
+        self.dikti.setText("")
+        self.dikti.setPixmap(QtGui.QPixmap("../src/logo_dikti.png"))
+        self.dikti.setScaledContents(True)
+        self.dikti.setWordWrap(True)
+        self.dikti.setObjectName("dikti")
+        self.unj = QtWidgets.QLabel(self.centralWidget)
+        self.unj.setGeometry(QtCore.QRect(750, 150, 91, 101))
+        self.unj.setText("")
+        self.unj.setPixmap(QtGui.QPixmap("../src/unj.png"))
+        self.unj.setScaledContents(True)
+        self.unj.setWordWrap(True)
+        self.unj.setObjectName("unj")
+        Transibi.setCentralWidget(self.centralWidget)
         
         Transibi.setCentralWidget(self.centralWidget)
 
