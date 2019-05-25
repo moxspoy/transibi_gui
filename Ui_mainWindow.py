@@ -16,7 +16,7 @@ import vlc
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon, QPixmap
 from SpeechRecognition import SpeechRecognition
-
+from Ui_helpDialog import Ui_Dialog
 
 class Ui_Transibi(object):
     def __init__(self, master=None):
@@ -178,11 +178,13 @@ class Ui_Transibi(object):
 
     def open_help(self):
         """ Open help dialog """
-        
+        self.Dialog = QtWidgets.QDialog()
+        self.uiDialog = Ui_Dialog()
+        self.uiDialog.setupUi(self.Dialog)
+        self.Dialog.show()
     def open_history(self):
         """ Open history dialog """
-        filename_test = "maju langkah me"
-        self.play_video_from_words(filename_test)
+        
         
     def exit_from_app(self):
         sys.exit()

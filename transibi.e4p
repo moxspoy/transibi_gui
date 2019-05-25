@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project transibi -->
-<!-- Saved: 2019-05-24, 16:56:11 -->
+<!-- Saved: 2019-05-25, 14:55:05 -->
 <!-- Copyright (C) 2019 M Nurilman Baehaqi, mnurilmanbaehaqi@gmail.com -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -14,12 +14,15 @@
   <Email>mnurilmanbaehaqi@gmail.com</Email>
   <Eol index="0"/>
   <Sources>
+    <Source>Ui_helpDialog.py</Source>
     <Source>Ui_mainWindow.py</Source>
+    <Source>Ui_settingLabel#.py</Source>
     <Source>__init__.py</Source>
     <Source>main.py</Source>
     <Source>mainWindow.py</Source>
   </Sources>
   <Forms>
+    <Form>helpDialog.ui</Form>
     <Form>mainWindow.ui</Form>
     <Form>settingLabel#.ui</Form>
   </Forms>
