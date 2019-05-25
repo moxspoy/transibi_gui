@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-5.1.dtd">
+<!-- eric project file for project transibi -->
+<!-- Saved: 2019-05-24, 16:56:11 -->
+<!-- Copyright (C) 2019 M Nurilman Baehaqi, mnurilmanbaehaqi@gmail.com -->
+<Project version="5.1">
+  <Language>en_US</Language>
+  <Hash>c3696e846763fe2977fea5497fc537028dfe4060</Hash>
+  <ProgLanguage mixed="0">Python3</ProgLanguage>
+  <ProjectType>PyQt5</ProjectType>
+  <Description>Transibi merupakan aplikasi penerjemah suara ke dalam SIBI. Biaya dari Kemristekdikti melalui PKM </Description>
+  <Version>0.1</Version>
+  <Author>M Nurilman Baehaqi</Author>
+  <Email>mnurilmanbaehaqi@gmail.com</Email>
+  <Eol index="0"/>
+  <Sources>
+    <Source>Ui_mainWindow.py</Source>
+    <Source>__init__.py</Source>
+    <Source>main.py</Source>
+    <Source>mainWindow.py</Source>
+  </Sources>
+  <Forms>
+    <Form>mainWindow.ui</Form>
+    <Form>settingLabel#.ui</Form>
+  </Forms>
+  <Translations/>
+  <Resources/>
+  <Interfaces/>
+  <Others/>
+  <MainScript>main.py</MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES"/>
+    <FiletypeAssociation pattern="*.py" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.py3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES"/>
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.ui" type="FORMS"/>
+  </FiletypeAssociations>
+</Project>
