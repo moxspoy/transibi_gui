@@ -22,11 +22,13 @@ class SpeechRecognition():
         result = None
         # obtain audio from the microphone
         r = sr.Recognizer()
+        r.energy_threshold = 7000
+        r.operation_timeout = 7  # in second
         global audio
         with sr.Microphone() as source:
-            sys.stdout.write("Mulai mendengarkan...")
+            print("Mulai mendengarkan...")
+            # audio = r.record(source,  duration = 4)
             audio = r.listen(source)
-            
         try:
             speech_result = r.recognize_google_cloud(audio, language = "id-ID", credentials_json=credentials_json)
             stemmed_word = stemmer.stem(speech_result)
@@ -37,6 +39,6 @@ class SpeechRecognition():
         except sr.RequestError as e:
             result = "Could not request results from Google Cloud Speech service; {0}".format(e)
         
-        sys.stdout.write(result) 
+        print("speech response: " + result) 
         return result
 

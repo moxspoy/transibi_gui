@@ -14,6 +14,7 @@ import threading
 import vlc
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon, QPixmap
 from SpeechRecognition import SpeechRecognition
 
 
@@ -71,6 +72,10 @@ class Ui_Transibi(object):
         self.videoframe.setPalette(self.palette)
         self.videoframe.setAutoFillBackground(True)
 
+        self.logo = QtWidgets.QLabel(self.centralWidget)
+        self.logo.setGeometry(QtCore.QRect(350, 480, 21, 21))
+        self.label.setPixmap(QtGui.QPixmap("../src/logo_dikti.png"))
+        self.label.setScaledContents(True)
         
         self.label_2 = QtWidgets.QLabel(self.centralWidget)
         self.label_2.setGeometry(QtCore.QRect(140, 480, 101, 21))
@@ -80,7 +85,7 @@ class Ui_Transibi(object):
         self.caption = QtWidgets.QLabel(self.centralWidget,  wordWrap = True)
         self.caption.setGeometry(QtCore.QRect(240, 480, 301, 71))
         self.caption.setObjectName("caption")
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.caption.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         
         Transibi.setCentralWidget(self.centralWidget)
 
@@ -88,7 +93,7 @@ class Ui_Transibi(object):
         QtCore.QMetaObject.connectSlotsByName(Transibi)
 
     def retranslateUi(self, Transibi):
-        init_label_text = "lorem lorem ipsum ipsum lorem lorem lorem ipsum ipsumlorem lorem ipsum ipsumlorem ipsum ipsum"
+        init_label_text = "Yang anda katakan ada di sini"
         _translate = QtCore.QCoreApplication.translate
         Transibi.setWindowTitle(_translate("Transibi", "Transibi - Penerjemah Suara ke SIBI"))
         self.listenBtn.setText(_translate("Transibi", "Dengarkan"))
@@ -111,13 +116,15 @@ class Ui_Transibi(object):
         speech = SpeechRecognition()
         result = speech.listen()
         
+        self.play_video_from_words(result)
+        
         end_time = self.get_time()
         int_interval = end_time - start_time
         interval = str(int_interval)
-        result = result + ", waktu process " + interval + " ms"
-        self.caption.setText(result)
+        result_log = result + ", waktu process " + interval + " ms"
+        self.caption.setText(result_log)
+        print(result)
         
-        self.play_video_from_words(result)
     def get_time(self):
         current_time = int(round(time.time() * 1000))
         return current_time
@@ -125,11 +132,12 @@ class Ui_Transibi(object):
     def play_video_from_words(self,  words):
         splitted_words = words.split()
         for m in splitted_words:
+            self.caption.setText(m)
             filename = "/home/pi/transibi/src/" + m + ".mp4"
-            self.caption.setText(filename)
-            self.play_video(filename)
+            self.play_video(filename,  m)
     
-    def play_video(self,  filename):
+    def play_video(self,  filename,  basename):
+        
         # getOpenFileName returns a tuple, so use only the actual file name
         self.media = self.instance.media_new(filename)
 
@@ -138,9 +146,6 @@ class Ui_Transibi(object):
 
         # Parse the metadata of the file
         self.media.parse()
-
-        # Set the title of the track as window title
-        self.transibi.setWindowTitle(self.media.get_meta(0))
 
         # The media player has to be 'connected' to the QFrame (otherwise the
         # video would be displayed in it's own window). This is platform
@@ -153,8 +158,11 @@ class Ui_Transibi(object):
         elif platform.system() == "Darwin": # for MacOS
             self.mediaplayer.set_nsobject(int(self.videoframe.winId()))
         
-        
         self.mediaplayer.play()
+        time.sleep(0.1)
+        duration = self.mediaplayer.get_length() / 1000
+        time.sleep(duration)
+        self.mediaplayer.stop()
 
     def open_help(self):
         """ Open help dialog """
